@@ -1,0 +1,33 @@
+name: push
+on:
+  push:
+    branches:
+      - main
+    # file paths to consider in the event. Optional; defaults to all.
+    paths:
+      - package.json
+  workflow_dispatch:
+    branches:
+      - master
+
+
+jobs:
+  icon_automation:
+    name: push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+
+      - run: npm ci
+#      - run: npm run generate
+#      - run: npm run build:bundle
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
