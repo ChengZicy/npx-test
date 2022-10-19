@@ -2,7 +2,7 @@
   "name": "@chengzicy/npx-test",
   "repository": "https://github.com/ChengZicy/npx-test.git",
   "author": "ChengZicy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
